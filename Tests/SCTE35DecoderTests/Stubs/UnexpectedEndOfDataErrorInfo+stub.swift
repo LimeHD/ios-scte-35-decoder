@@ -5,7 +5,7 @@
 //  Created by Robert Galluccio on 06/02/2021.
 //
 
-@testable import SCTE35Parser
+@testable import SCTE35Decoder
 
 extension UnexpectedEndOfDataErrorInfo {
     static func stub(

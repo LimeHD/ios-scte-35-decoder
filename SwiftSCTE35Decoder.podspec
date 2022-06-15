@@ -1,5 +1,5 @@
 #
-#  Be sure to run `pod spec lint SwiftSCTE35Parser.podspec' to ensure this is a
+#  Be sure to run `pod spec lint SwiftSCTE35Decoder.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
 #  To learn more about Podspec attributes see https://guides.cocoapods.org/syntax/podspec.html
@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = 'SwiftSCTE35Parser'
+  spec.name         = 'SwiftSCTE35Decoder'
   spec.version      = '0.3.1'
   spec.summary      = 'A Swift implemented abstraction of SCTE-35 messages.'
 
@@ -25,11 +25,11 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  SCTE35Parser aims to provide an easy to use, Swift implemented abstraction of SCTE-35 messages, 
+  SCTE35Decoder aims to provide an easy to use, Swift implemented abstraction of SCTE-35 messages, 
   in particular the Splice Info Section type. The 2020 SCTE-25 specification was used and is included as part of the repository.
                    DESC
 
-  spec.homepage     = 'https://github.com/LimeHD/swift-scte-35-parser'
+  spec.homepage     = 'https://github.com/LimeHD/swift-scte-35-decoder'
   # spec.screenshots  = 'www.example.com/screenshots_1.gif', 'www.example.com/screenshots_2.gif'
 
 
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => 'https://github.com/LimeHD/swift-scte-35-parser.git', :tag => '#{spec.version}' }
+  spec.source       = { :git => 'https://github.com/LimeHD/swift-scte-35-decoder.git', :tag => '#{spec.version}' }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -92,7 +92,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = 'Sources/SCTE35Parser/**/*.{h,m,swift}'
+  spec.source_files  = 'Sources/SCTE35Decoder/**/*.{h,m,swift}'
   # spec.exclude_files = 'Classes/Exclude'
 
   # spec.public_header_files = 'Classes/**/*.h'

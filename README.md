@@ -1,10 +1,10 @@
-# SCTE35Parser
-SCTE35Parser aims to provide an easy to use, Swift implemented abstraction of SCTE-35 messages, in particular the Splice Info Section type. The [2020 SCTE-25 specification](./Specification/SCTE-35-2020_notice-1609861286512.pdf) was used and is included as part of the repository.
+# SCTE35Decoder
+SCTE35Decoder aims to provide an easy to use, Swift implemented abstraction of SCTE-35 messages, in particular the Splice Info Section type. The [2020 SCTE-25 specification](./Specification/SCTE-35-2020_notice-1609861286512.pdf) was used and is included as part of the repository.
 
 One of the design goals of the abstraction was to make it more "Swifty", in the sense of having the abstraction more type-safe, by eliminating from the public abstraction a lot of the specified information used just for parsing, and translating it instead into more normal Swift concepts, such as optionals, enums, etc. For example, the specification includes many "flags" used to determine if the next section needs to be parsed; in these cases the flag is not publicised and instead the following section is exposed as an `Optional` on the public abstraction.
 
 ## Usage
-The primary integration point to the framework is the [`SpliceInfoSection`](./Sources/SCTE35Parser/SpliceInfoSection.swift) struct.
+The primary integration point to the framework is the [`SpliceInfoSection`](./Sources/SCTE35Decoder/SpliceInfoSection.swift) struct.
 
 Given a base64 encoded SCTE-35 message, the `SpliceInfoSection` offers an `init(base64String: String) throws`.
 ```swift
@@ -12,7 +12,7 @@ let base64String = "/DA0AAAAAAAA///wBQb+cr0AUAAeAhxDVUVJSAAAjn/PAAGlmbAICAAAAAAs
 let spliceInfoSection = try SpliceInfoSection(base64String: base64String)
 ```
 
-Errors can be thrown if there are some issues with the provided SCTE-35 message that invalidate the parsing. If an error is thrown it will be a [`SCTE35ParserError`](./Sources/SCTE35Parser/Errors/SCTE35ParserError.swift). This is a wrapper `struct` that includes the thrown `error`, as well as the first "non-fatal" error that was stored during parsing. When using the `SCTE35ParserError` as `NSError`, the `underlyingError` will be stored in `userInfo[NSUnderlyingErrorKey]`.
+Errors can be thrown if there are some issues with the provided SCTE-35 message that invalidate the parsing. If an error is thrown it will be a [`SCTE35DecoderError`](./Sources/SCTE35Decoder/Errors/SCTE35DecoderError.swift). This is a wrapper `struct` that includes the thrown `error`, as well as the first "non-fatal" error that was stored during parsing. When using the `SCTE35DecoderError` as `NSError`, the `underlyingError` will be stored in `userInfo[NSUnderlyingErrorKey]`.
 
 The parser also keeps a storage of `nonFatalErrors`. The idea here is that there may be some inconsistencies in the SCTE-35 message (e.g. mis-match between declared `SpliceCommand` length and parsed length), but the message on the whole is still parsable, and so instead of killing the whole parse by throwing, the error is just logged to the `nonFatalErrors` instead.
 

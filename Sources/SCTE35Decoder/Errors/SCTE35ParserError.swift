@@ -1,5 +1,5 @@
 //
-//  SCTE35ParserError.swift
+//  SCTE35DecoderError.swift
 //  
 //
 //  Created by Robert Galluccio on 02/05/2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SCTE35ParserError: Equatable, LocalizedError, CustomNSError {
+public struct SCTE35DecoderError: Equatable, LocalizedError, CustomNSError {
     public static var errorDomain: String { ParserError.errorDomain }
     
     public let error: ParserError

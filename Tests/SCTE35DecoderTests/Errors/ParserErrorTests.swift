@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-import SCTE35Parser
+import SCTE35Decoder
 
 class ParserErrorTests: XCTestCase {
     var expectedError: ParserError!

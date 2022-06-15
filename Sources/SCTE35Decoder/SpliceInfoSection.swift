@@ -134,7 +134,7 @@ public struct SpliceInfoSection: Equatable {
     
     /// Creates a `SpliceInfoSection` using the provided base64 encoded string.
     /// - Parameter base64String: A string of base64 encoded SCTE-35 data.
-    /// - Throws: `SCTE35ParserError`
+    /// - Throws: `SCTE35DecoderError`
     public init(base64String: String) throws {
         guard let data = Data(base64Encoded: base64String) else {
             throw ParserError.invalidInputString(base64String)
@@ -144,7 +144,7 @@ public struct SpliceInfoSection: Equatable {
     
     /// Creates a `SpliceInfoSection` using the provided hex encoded string.
     /// - Parameter hexString: A string of hex encoded SCTE-35 data.
-    /// - Throws: `SCTE35ParserError`
+    /// - Throws: `SCTE35DecoderError`
     public init(hexString: String) throws {
         guard let data = Data(hexString: hexString) else {
             throw ParserError.invalidInputString(hexString)
@@ -157,7 +157,7 @@ public struct SpliceInfoSection: Equatable {
     /// string "looks hex" by checking that it has a `0x` prefix, and assuming that attempt to convert to `Data` using hex format first
     /// and failing that trying with `Data.init?(base64Encoded base64String: String)` (and vice-versa where the string
     /// does not "look hex").
-    /// - Throws: `SCTE35ParserError`
+    /// - Throws: `SCTE35DecoderError`
     public init(_ string: String) throws {
         let looksHex = string.hasPrefix("0x")
         if looksHex {
@@ -263,7 +263,7 @@ public extension SpliceInfoSection.EncryptedPacket {
 public extension SpliceInfoSection {
     /// Creates a `SpliceInfoSection` from the provided `Data`.
     /// - Parameter data: `Data` representing SCTE-35 information.
-    /// - Throws: `SCTE35ParserError`
+    /// - Throws: `SCTE35DecoderError`
     init(data: Data) throws {
         let bitReader = DataReader(data: data)
         do {
@@ -305,7 +305,7 @@ public extension SpliceInfoSection {
             self.nonFatalErrors = bitReader.nonFatalErrors
         } catch {
             guard let parserError = error as? ParserError else { throw error }
-            throw SCTE35ParserError(error: parserError, underlyingError: bitReader.nonFatalErrors.first)
+            throw SCTE35DecoderError(error: parserError, underlyingError: bitReader.nonFatalErrors.first)
         }
     }
 }

@@ -1,7 +1,7 @@
 import XCTest
-import SCTE35Parser
+import SCTE35Decoder
 
-final class SCTE35ParserTests: XCTestCase {
+final class SCTE35DecoderTests: XCTestCase {
     // MARK: - SCTE-35 2020 - 14. Sample SCTE 35 Messages (Informative)
     
     // 14.1. time_signal – Placement Opportunity Start
@@ -723,7 +723,7 @@ final class SCTE35ParserTests: XCTestCase {
     func test_timeSignal_segmentationDescriptor_invalidEIDR() {
         let hexString = "0xFC30280000000000000000700506FF1252E9220012021043554549000000007F9F0A013050000015871049"
         XCTAssertThrowsError(try SpliceInfoSection(hexString)) { error in
-            guard let error = error as? SCTE35ParserError else { return XCTFail("Thrown error not ParserError") }
+            guard let error = error as? SCTE35DecoderError else { return XCTFail("Thrown error not ParserError") }
             switch error.error {
             case .unexpectedSegmentationUPIDLength(let info):
                 XCTAssertEqual(1, info.declaredSegmentationUPIDLength)

@@ -29,7 +29,7 @@ public enum ParserError: Equatable, LocalizedError, CustomNSError {
     case unexpectedDescriptorLoopLength(UnexpectedDescriptorLoopLengthErrorInfo)
     case unexpectedSpliceDescriptorLength(UnexpectedSpliceDescriptorLengthErrorInfo)
     
-    public static var errorDomain: String { "SCTE35ParserError" }
+    public static var errorDomain: String { "SCTE35DecoderError" }
     
     public static let unexpectedEndOfDataUserInfoKey = "unexpectedEndOfDataUserInfoKey"
     public static let invalidInputStringUserInfoKey = "invalidUserInputUserInfoKey"

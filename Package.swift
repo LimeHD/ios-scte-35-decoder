@@ -4,24 +4,24 @@
 import PackageDescription
 
 let package = Package(
-    name: "SCTE35Parser",
+    name: "SCTE35Decoder",
     products: [
         .library(
-            name: "SCTE35Parser",
-            targets: ["SCTE35Parser"]
+            name: "SCTE35Decoder",
+            targets: ["SCTE35Decoder"]
         )
     ],
     targets: [
         .target(
-            name: "SCTE35Parser",
+            name: "SCTE35Decoder",
             exclude: [
                 "BitParser/BitByteData/LICENCE",
                 "BitParser/BitByteData/README.md"
             ]
         ),
         .testTarget(
-            name: "SCTE35ParserTests",
-            dependencies: ["SCTE35Parser"]
+            name: "SCTE35DecoderTests",
+            dependencies: ["SCTE35Decoder"]
         )
     ]
 )
