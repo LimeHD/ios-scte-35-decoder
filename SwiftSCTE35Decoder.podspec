@@ -29,7 +29,7 @@ Pod::Spec.new do |spec|
   in particular the Splice Info Section type. The 2020 SCTE-25 specification was used and is included as part of the repository.
                    DESC
 
-  spec.homepage     = 'https://github.com/LimeHD/swift-scte-35-decoder'
+  spec.homepage     = 'https://github.com/LimeHD/ios-scte-35-decoder'
   # spec.screenshots  = 'www.example.com/screenshots_1.gif', 'www.example.com/screenshots_2.gif'
 
 
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => 'https://github.com/LimeHD/swift-scte-35-decoder.git', :tag => '#{spec.version}' }
+  spec.source       = { :git => 'https://github.com/LimeHD/ios-scte-35-decoder.git', :tag => '#{spec.version}' }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
