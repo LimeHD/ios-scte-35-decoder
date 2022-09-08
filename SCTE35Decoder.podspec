@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = 'SwiftSCTE35Decoder'
+  spec.name         = 'SCTE35Decoder'
   spec.version      = '0.3.2'
   spec.summary      = 'A Swift implemented abstraction of SCTE-35 messages.'
 
