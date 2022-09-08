@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = 'SwiftSCTE35Decoder'
-  spec.version      = '0.3.1'
+  spec.version      = '0.3.2'
   spec.summary      = 'A Swift implemented abstraction of SCTE-35 messages.'
 
   # This description is used to generate tags and improve search results.
