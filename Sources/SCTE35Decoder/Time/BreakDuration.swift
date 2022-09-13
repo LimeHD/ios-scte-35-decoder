@@ -5,6 +5,8 @@
 //  Created by Robert Galluccio on 30/01/2021.
 //
 
+import Foundation
+
 /// The `BreakDuration` structure specifies the duration of the commercial break(s). It may
 /// be used to give the splicer an indication of when the break will be over and when the
 /// network in point will occur.
@@ -30,6 +32,14 @@ public struct BreakDuration: Equatable {
     /// A 33-bit field that indicates elapsed time in terms of ticks of the program's 90 kHz
     /// clock.
     public let duration: UInt64
+    /**
+     Calculated value converted from ``duration`` property.
+     
+     [Calculate the splice event's time from pts time in SCTE 35 message](https://stackoverflow.com/questions/23074114/calculate-the-splice-events-time-from-pts-time-in-scte-35-message).
+     */
+    public var durationInSeconds: TimeInterval {
+        TimeInterval(self.duration) / TimeInterval(90_000)
+    }
     
     public init(
         autoReturn: Bool,
@@ -38,9 +48,11 @@ public struct BreakDuration: Equatable {
         self.autoReturn = autoReturn
         self.duration = duration
     }
+    
+    
 }
 
-// MARK: - Parsing
+// MARK: Parsing (convinience init)
 
 extension BreakDuration {
     init(bitReader: DataBitReader) throws {
@@ -52,4 +64,6 @@ extension BreakDuration {
         _ = bitReader.bits(count: 6)
         duration = bitReader.uint64(fromBits: 33)
     }
+    
+    
 }
