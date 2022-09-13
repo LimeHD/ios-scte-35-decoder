@@ -48,9 +48,24 @@ public enum SpliceCommand: Equatable {
         case .privateCommand: return .privateCommand
         }
     }
+    /**
+     The syntactic sugar for extracting the `spliceInsert` value.
+     */
+    public func getSpliceInsert() -> SpliceInsert? {
+        let spliceInsert: SpliceInsert?
+        if case let SpliceCommand.spliceInsert(associatedValue) = self {
+            spliceInsert = associatedValue
+        } else {
+            spliceInsert = nil
+        }
+        
+        return spliceInsert
+    }
+    
+    
 }
 
-// MARK: - Parsing
+// MARK: Parsing (convinience init)
 
 extension SpliceCommand {
     /// Constructs a `SpliceCommand` using a `DataBitReader` that should have been constructed with a
@@ -95,4 +110,6 @@ extension SpliceCommand {
             )
         }
     }
+    
+    
 }
